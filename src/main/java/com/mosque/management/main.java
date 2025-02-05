@@ -1,5 +1,9 @@
 package com.mosque.management;
+import com.mosque.management.users.Student;
+
 import java.util.Scanner;
+
+import static com.mosque.management.database.StudentQueries.insertNewStudentToDB;
 
 public class main {
     public static void mainn(String[] args) {
@@ -15,7 +19,8 @@ public class main {
             int option = sc.nextInt();
             switch (option){
                 case 1:
-                    promptSignup();
+                    Student newStudent = InputHandler.promptSignup();
+                    insertNewStudentToDB(newStudent);
                     break;
                 case 2:
                    login();
@@ -47,9 +52,10 @@ public class main {
     private static void loginFaculty() {
     }
 
-    public static void promptSignup(){
-        Scanner sc = new Scanner(System.in);
-    }
+
+
+
+
     public static void login(){
         Scanner sc = new Scanner(System.in);
     }

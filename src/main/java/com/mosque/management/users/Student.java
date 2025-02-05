@@ -1,8 +1,11 @@
 package com.mosque.management.users;
 
 import com.mosque.management.education.Course;
-
+import java.util.ArrayList;
 import java.util.List;
+import com.mosque.management.users.EmergencyContact;
+
+import java.util.Scanner;
 
 public class Student implements Person{
     private String firstName;
@@ -10,7 +13,7 @@ public class Student implements Person{
     private String doB;
     private String email;
     private String address;
-    private String telNo;
+    private int telNo;
     private String username;
     private String password;
     private String allergies;
@@ -21,7 +24,7 @@ public class Student implements Person{
     private List<Teacher> teachers;
     private List<EmergencyContact> emergencyContacts;
     public Student(String firstName, String lastName, String doB,
-                   String email, String address, String telNo,
+                   String email, String address, int telNo,
                    String username, String password, String allergies,
                    double punctuality, double moneyOwed, double attendance,
                    List<Course> courses, List<Teacher> teachers,
@@ -41,6 +44,24 @@ public class Student implements Person{
         this.courses = courses;
         this.teachers = teachers;
         this.emergencyContacts = emergencyContacts;
+    }
+    public Student(String firstName, String lastName, String doB,
+                   String email, String address, int telNo,
+                   String username, String password, String allergies,
+                   List<EmergencyContact> emergencyContacts){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.doB = doB;
+        this.email = email;
+        this.address = address;
+        this.telNo = telNo;
+        this.username = username;
+        this.password = password;
+        this.allergies = allergies;
+        this.emergencyContacts = emergencyContacts;
+        this.moneyOwed=0;
+        this.attendance=0;
+        this.courses=new ArrayList<Course>();
     }
 
 
@@ -66,9 +87,9 @@ public class Student implements Person{
     @Override
     public void setAddress(String address) { this.address = address; }
     @Override
-    public String getTelNo() { return telNo; }
+    public int getTelNo() { return telNo; }
     @Override
-    public void setTelNo(String telNo) { this.telNo = telNo; }
+    public void setTelNo(int telNo) { this.telNo = telNo; }
 
     // Student specific getters and setters
     public String getUsername() { return username; }
@@ -91,4 +112,6 @@ public class Student implements Person{
     public void setEmergencyContacts(List<EmergencyContact> emergencyContacts) {
         this.emergencyContacts = emergencyContacts;
     }
+
+
 }

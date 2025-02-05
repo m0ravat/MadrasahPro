@@ -6,14 +6,14 @@ public class Teacher implements Person{
     private String doB;
     private String email;
     private String address;
-    private String telNo;
+    private int telNo;
     private String username;
     private String password;
     private String cv;
     private double salary;
     private int hours;
     public Teacher(String firstName, String lastName, String doB,
-                   String email, String address, String telNo,
+                   String email, String address, int telNo,
                    String username, String password, String cv,
                    double salary, int hours) {
         this.firstName = firstName;
@@ -51,9 +51,9 @@ public class Teacher implements Person{
     @Override
     public void setAddress(String address) { this.address = address; }
     @Override
-    public String getTelNo() { return telNo; }
+    public int getTelNo() { return telNo; }
     @Override
-    public void setTelNo(String telNo) { this.telNo = telNo; }
+    public void setTelNo(int telNo) { this.telNo = telNo; }
 
     // Teacher specific getters and setters
     public String getUsername() { return username; }

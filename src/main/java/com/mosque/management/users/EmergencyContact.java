@@ -3,25 +3,25 @@ package com.mosque.management.users;
 public class EmergencyContact implements Person {
     private String firstName;
     private String lastName;
-    private String doB;
+    private int age;
     private String email;
     private String address;
-    private String telNo;
+    private int telNo;
     private String relationship;
-    private String alternatePhone;
+    private String alternateContact;
     private boolean primaryContact;
-    public EmergencyContact(String firstName, String lastName, String doB,
-                            String email, String address, String telNo,
-                            String relationship, String alternatePhone,
+    public EmergencyContact(String firstName, String lastName, int age,
+                            String email, String address, int telNo,
+                            String relationship, String alternateContact,
                             boolean primaryContact) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.doB = doB;
+        this.age = age;
         this.email = email;
         this.address = address;
         this.telNo = telNo;
         this.relationship = relationship;
-        this.alternatePhone = alternatePhone;
+        this.alternateContact = alternateContact;
         this.primaryContact = primaryContact;
     }
 
@@ -47,12 +47,19 @@ public class EmergencyContact implements Person {
 
     @Override
     public String getDoB() {
-        return doB;
+        return "";
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
     public void setDoB(String doB) {
-        this.doB = doB;
+        System.out.println(1);
     }
 
     @Override
@@ -76,12 +83,12 @@ public class EmergencyContact implements Person {
     }
 
     @Override
-    public String getTelNo() {
+    public int getTelNo() {
         return telNo;
     }
 
     @Override
-    public void setTelNo(String telNo) {
+    public void setTelNo(int telNo) {
         this.telNo = telNo;
     }
 
@@ -94,12 +101,12 @@ public class EmergencyContact implements Person {
         this.relationship = relationship;
     }
 
-    public String getAlternatePhone() {
-        return alternatePhone;
+    public String getAlternateContact() {
+        return alternateContact;
     }
 
-    public void setAlternatePhone(String alternatePhone) {
-        this.alternatePhone = alternatePhone;
+    public void setAlternateContact(String alternateContact) {
+        this.alternateContact = alternateContact;
     }
 
     public boolean isPrimaryContact() {

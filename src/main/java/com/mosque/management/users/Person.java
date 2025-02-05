@@ -6,11 +6,13 @@ public interface Person {
     String getLastName();
     void setLastName(String lastName);
     String getDoB();
+
+
     void setDoB(String doB);
     String getEmail();
     void setEmail(String email);
     String getAddress();
     void setAddress(String address);
-    String getTelNo();
-    void setTelNo(String telNo);
+    int getTelNo();
+    void setTelNo(int telNo);
 }
