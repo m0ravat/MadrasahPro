@@ -1,12 +1,16 @@
 package com.mosque.management;
 import com.mosque.management.users.Student;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import java.util.Scanner;
 
 import static com.mosque.management.database.StudentQueries.insertNewStudentToDB;
 
-public class main {
-    public static void mainn(String[] args) {
+public class Main {
+    public static void main(String[] args) {
+
         boolean menu1 = true;
         while (menu1){
             System.out.println("Welcome to MadrasahPro! Would you like to: ");
