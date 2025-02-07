@@ -2,30 +2,22 @@ package com.mosque.management.education;
 
 public class Subject {
     private String subjectName;
-    private String desc;
+    private String shortDesc;
     private String overview;
     private String outcome;
     private int duration;
-    private String startDate;
-    private String grade;
-    private Course course;
-    public Subject(String subjectName, String desc, String overview, String outcome,
-                   int duration, String startDate, String grade, Course course) {
+    private String startYear;
+
+    public Subject(String subjectName, String shortDesc, String overview, String outcome,
+                   int duration, String startYear) {
         this.subjectName = subjectName;
-        this.desc = desc;
+        this.shortDesc = shortDesc;
         this.overview = overview;
         this.outcome = outcome;
         this.duration = duration;
-        this.startDate = startDate;
-        this.grade = grade;
-        this.course = course;
+        this.startYear = startYear;
     }
-    public Course getCourse() {
-        return course;
-    }
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+
     public String getSubjectName() {
         return subjectName;
     }
@@ -34,12 +26,12 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getshortDesc() {
+        return shortDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setshortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
     }
 
     public String getOverview() {
@@ -66,19 +58,18 @@ public class Subject {
         this.duration = duration;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getstartYear() {
+        return startYear;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startYear) {
+        this.startYear = startYear;
+    }
+    public String toString(){
+        return "Subject Name : " + subjectName + "\n" +
+                " Subject Desc : " + shortDesc + "\n" +
+                " Subject Overview : " + overview + "\n" + " Start Year : " +
+                startYear + "\n" + "Outcome : " + outcome + "\n" + duration + " years";
     }
 
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
 }

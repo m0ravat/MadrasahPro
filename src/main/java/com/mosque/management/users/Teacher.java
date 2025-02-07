@@ -1,20 +1,23 @@
 package com.mosque.management.users;
 
+import java.util.Date;
+
 public class Teacher implements Person{
     private String firstName;
     private String lastName;
-    private String doB;
+    private java.sql.Date doB;
     private String email;
     private String address;
-    private int telNo;
+    private String telNo;
     private String username;
+    private String allergies;
     private String password;
     private String cv;
     private double salary;
     private int hours;
-    public Teacher(String firstName, String lastName, String doB,
-                   String email, String address, int telNo,
-                   String username, String password, String cv,
+    public Teacher(String firstName, String lastName, java.sql.Date doB,
+                   String email, String address, String telNo,
+                   String allergies, String password, String cv,
                    double salary, int hours) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,11 +25,30 @@ public class Teacher implements Person{
         this.email = email;
         this.address = address;
         this.telNo = telNo;
-        this.username = username;
+        this.allergies = allergies;
         this.password = password;
         this.cv = cv;
         this.salary = salary;
         this.hours = hours;
+    }
+    public Teacher(String email, String password){
+        this.email=email;
+        this.password=password;
+    }
+    public Teacher(String fir, String lastName, java.sql.Date doB, String email,
+                   String address, String telNo, String allergies, String password,
+                   double salary, String CV, int hours){
+        this.firstName = fir;
+        this.lastName = lastName;
+        this.doB = doB;
+        this.email = email;
+        this.address = address;
+        this.telNo = telNo;
+        this.password = password;
+        this.cv = CV;
+        this.salary = salary;
+        this.hours = hours;
+        this.allergies=allergies;
     }
 
     // Person interface implementation
@@ -39,9 +61,9 @@ public class Teacher implements Person{
     @Override
     public void setLastName(String lastName) { this.lastName = lastName; }
     @Override
-    public String getDoB() { return doB; }
+    public java.sql.Date getDoB() { return doB; }
     @Override
-    public void setDoB(String doB) { this.doB = doB; }
+    public void setDoB(java.sql.Date doB) { this.doB = doB; }
     @Override
     public String getEmail() { return email; }
     @Override
@@ -51,9 +73,9 @@ public class Teacher implements Person{
     @Override
     public void setAddress(String address) { this.address = address; }
     @Override
-    public int getTelNo() { return telNo; }
+    public String getTelNo() { return telNo; }
     @Override
-    public void setTelNo(int telNo) { this.telNo = telNo; }
+    public void setTelNo(String telNo) { this.telNo = telNo; }
 
     // Teacher specific getters and setters
     public String getUsername() { return username; }

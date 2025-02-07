@@ -1,28 +1,22 @@
 package com.mosque.management.users;
 
+import java.util.Date;
+
 public class EmergencyContact implements Person {
     private String firstName;
     private String lastName;
-    private int age;
+    private java.sql.Date doB;
     private String email;
     private String address;
-    private int telNo;
-    private String relationship;
-    private String alternateContact;
-    private boolean primaryContact;
-    public EmergencyContact(String firstName, String lastName, int age,
-                            String email, String address, int telNo,
-                            String relationship, String alternateContact,
-                            boolean primaryContact) {
+    private String telNo;
+    public EmergencyContact(String firstName, String lastName, java.sql.Date doB,
+                            String email, String address,String telNo) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.doB = doB;
         this.email = email;
         this.address = address;
         this.telNo = telNo;
-        this.relationship = relationship;
-        this.alternateContact = alternateContact;
-        this.primaryContact = primaryContact;
     }
 
     @Override
@@ -46,20 +40,13 @@ public class EmergencyContact implements Person {
     }
 
     @Override
-    public String getDoB() {
-        return "";
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-    public void setAge(int age) {
-        this.age = age;
+    public java.sql.Date getDoB() {
+        return this.doB;
     }
 
     @Override
-    public void setDoB(String doB) {
-        System.out.println(1);
+    public void setDoB(java.sql.Date doB) {
+        System.out.println(this.doB);
     }
 
     @Override
@@ -83,37 +70,14 @@ public class EmergencyContact implements Person {
     }
 
     @Override
-    public int getTelNo() {
+    public String getTelNo() {
         return telNo;
     }
 
     @Override
-    public void setTelNo(int telNo) {
+    public void setTelNo(String telNo) {
         this.telNo = telNo;
     }
 
-    // Additional getters and setters specific to EmergencyContact
-    public String getRelationship() {
-        return relationship;
-    }
 
-    public void setRelationship(String relationship) {
-        this.relationship = relationship;
-    }
-
-    public String getAlternateContact() {
-        return alternateContact;
-    }
-
-    public void setAlternateContact(String alternateContact) {
-        this.alternateContact = alternateContact;
-    }
-
-    public boolean isPrimaryContact() {
-        return primaryContact;
-    }
-
-    public void setPrimaryContact(boolean primaryContact) {
-        this.primaryContact = primaryContact;
-    }
 }

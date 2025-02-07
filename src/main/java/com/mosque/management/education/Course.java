@@ -5,15 +5,13 @@ public class Course {
     private String shortDesc;
     private String longDesc;
     private int duration;
-    private String grade;
     private double price;
     public Course(String courseName, String shortDesc, String longDesc, int duration,
-                  String grade, double price) {
+                  double price) {
         this.courseName = courseName;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         this.duration = duration;
-        this.grade = grade;
         this.price = price;
     }
 
@@ -48,20 +46,17 @@ public class Course {
     public void setDuration(int duration) {
         this.duration = duration;
     }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
+    }
+    @Override
+    public String toString(){
+        return "Course Name : " + courseName + "\n" + " Short Description : " +
+                shortDesc + "\n" + " LongDesc : " + longDesc +
+                "\n" + " Duration : " + duration + "\n" + "Price : " + price;
     }
 }

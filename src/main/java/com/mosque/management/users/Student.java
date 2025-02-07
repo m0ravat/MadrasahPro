@@ -1,69 +1,60 @@
 package com.mosque.management.users;
 
-import com.mosque.management.education.Course;
-import java.util.ArrayList;
-import java.util.List;
-import com.mosque.management.users.EmergencyContact;
-
-import java.util.Scanner;
+import java.util.Date;
 
 public class Student implements Person{
     private String firstName;
     private String lastName;
-    private String doB;
+    private java.sql.Date doB;
     private String email;
     private String address;
-    private int telNo;
+    private String telNo;
     private String username;
     private String password;
     private String allergies;
     private double punctuality;
     private double moneyOwed;
     private double attendance;
-    private List<Course> courses;
-    private List<Teacher> teachers;
-    private List<EmergencyContact> emergencyContacts;
-    public Student(String firstName, String lastName, String doB,
-                   String email, String address, int telNo,
-                   String username, String password, String allergies,
+    private EmergencyContact emergencyContact;
+    public Student(String firstName, String lastName, java.sql.Date doB,
+                   String email, String address, String telNo,
+                   String password, String allergies,
                    double punctuality, double moneyOwed, double attendance,
-                   List<Course> courses, List<Teacher> teachers,
-                   List<EmergencyContact> emergencyContacts) {
+                   EmergencyContact emergencyContact) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.doB = doB;
         this.email = email;
         this.address = address;
         this.telNo = telNo;
-        this.username = username;
         this.password = password;
         this.allergies = allergies;
         this.punctuality = punctuality;
         this.moneyOwed = moneyOwed;
         this.attendance = attendance;
-        this.courses = courses;
-        this.teachers = teachers;
-        this.emergencyContacts = emergencyContacts;
+        this.emergencyContact = emergencyContact;
     }
-    public Student(String firstName, String lastName, String doB,
-                   String email, String address, int telNo,
-                   String username, String password, String allergies,
-                   List<EmergencyContact> emergencyContacts){
+    public Student(String firstName, String lastName, java.sql.Date doB,
+                   String email, String address, String telNo,
+                   String password, String allergies,
+                   EmergencyContact emergencyContact){
         this.firstName = firstName;
         this.lastName = lastName;
         this.doB = doB;
         this.email = email;
         this.address = address;
         this.telNo = telNo;
-        this.username = username;
         this.password = password;
         this.allergies = allergies;
-        this.emergencyContacts = emergencyContacts;
+        this.emergencyContact = emergencyContact;
         this.moneyOwed=0;
         this.attendance=0;
-        this.courses=new ArrayList<Course>();
+        this.punctuality=0;
     }
-
+    public Student(String email, String password){
+        this.email=email;
+        this.password=password;
+    }
 
     // Person interface implementation
     @Override
@@ -75,9 +66,9 @@ public class Student implements Person{
     @Override
     public void setLastName(String lastName) { this.lastName = lastName; }
     @Override
-    public String getDoB() { return doB; }
+    public java.sql.Date getDoB() { return doB; }
     @Override
-    public void setDoB(String doB) { this.doB = doB; }
+    public void setDoB(java.sql.Date doB) { this.doB = doB; }
     @Override
     public String getEmail() { return email; }
     @Override
@@ -87,9 +78,9 @@ public class Student implements Person{
     @Override
     public void setAddress(String address) { this.address = address; }
     @Override
-    public int getTelNo() { return telNo; }
+    public String getTelNo() { return telNo; }
     @Override
-    public void setTelNo(int telNo) { this.telNo = telNo; }
+    public void setTelNo(String telNo) { this.telNo = telNo; }
 
     // Student specific getters and setters
     public String getUsername() { return username; }
@@ -104,13 +95,9 @@ public class Student implements Person{
     public void setMoneyOwed(double moneyOwed) { this.moneyOwed = moneyOwed; }
     public double getAttendance() { return attendance; }
     public void setAttendance(double attendance) { this.attendance = attendance; }
-    public List<Course> getCourses() { return courses; }
-    public void setCourses(List<Course> courses) { this.courses = courses; }
-    public List<Teacher> getTeachers() { return teachers; }
-    public void setTeachers(List<Teacher> teachers) { this.teachers = teachers; }
-    public List<EmergencyContact> getEmergencyContacts() { return emergencyContacts; }
-    public void setEmergencyContacts(List<EmergencyContact> emergencyContacts) {
-        this.emergencyContacts = emergencyContacts;
+    public EmergencyContact getEmergencyContact() { return emergencyContact; }
+    public void setEmergencyContact(EmergencyContact emergencyContact) {
+        this.emergencyContact = emergencyContact;
     }
 
 
