@@ -8,4 +8,4 @@ religious obligations", 2, 350),
     ("Islamic Studies Diploma", "Lessons designed for young adults who want to develop their
      knowledge of the deen beyond the fundamentals", "This class is designed for
      teenagers/young adults from 16 onwards for those who want a comprehensive course
-     into Islamic principles but cannot commit to an alimiyyah course.", 2, 500),
+     into Islamic principles but cannot commit to an alimiyyah course.", 2, 500);

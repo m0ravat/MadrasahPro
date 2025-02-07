@@ -31,11 +31,11 @@ CREATE TABLE Subject (
                          FOREIGN KEY (courseName) REFERENCES Course(courseName) ON DELETE SET NULL
 );
 
-CREATE TABLE Class (
-                       className VARCHAR(100) PRIMARY KEY,
+CREATE TABLE Lesson (
+                       lessonName VARCHAR(100) PRIMARY KEY,
                        weekNo INT,
                        duration INT,
-                       yearStart TIME,
+                       timeStart TIME,
                        teacherEmail VARCHAR(100) NULL, -- Changed to reference Teacher(email)
                        subjectName VARCHAR(100),
                        FOREIGN KEY (teacherEmail) REFERENCES Teacher(email) ON DELETE SET NULL,
@@ -53,9 +53,7 @@ CREATE TABLE Student (
                          password VARCHAR(255) NOT NULL,
                          punctuality DECIMAL(5,2),
                          moneyOwed DECIMAL(10,2),
-                         attendance DECIMAL(5,2),
-                         courseName VARCHAR(100) NULL,
-                         FOREIGN KEY (courseName) REFERENCES Course(courseName) ON DELETE SET NULL
+                         attendance DECIMAL(5,2)
 );
 
 CREATE TABLE EmergencyContact (
@@ -74,9 +72,10 @@ CREATE TABLE StudentCourseAllocation (
                                          studentEmail VARCHAR(100), -- Changed to reference Student(email)
                                          courseName VARCHAR(100),
                                          yearJoined INT,
+                                         monthJoined INT,
                                          grade VARCHAR(10),
                                          status VARCHAR(20),
-                                         PRIMARY KEY (studentEmail, courseName, dateJoined),
+                                         PRIMARY KEY (studentEmail, courseName, yearJoined),
                                          FOREIGN KEY (studentEmail) REFERENCES Student(email) ON DELETE CASCADE,
                                          FOREIGN KEY (courseName) REFERENCES Course(courseName) ON DELETE CASCADE
 );
@@ -131,9 +130,9 @@ CREATE TABLE BookOrder (
 
 CREATE TABLE StudentAttendance (
                                    studentEmail VARCHAR(100), -- Changed to reference Student(email)
-                                   className VARCHAR(100),
+                                   lessonName VARCHAR(100),
                                    mark DECIMAL(5,2),
-                                   PRIMARY KEY (studentEmail, className),
+                                   PRIMARY KEY (studentEmail, lessonName,mark),
                                    FOREIGN KEY (studentEmail) REFERENCES Student(email) ON DELETE CASCADE,
-                                   FOREIGN KEY (className) REFERENCES Class(className) ON DELETE CASCADE
+                                   FOREIGN KEY (lessonName) REFERENCES Lesson(lessonName) ON DELETE CASCADE
 );

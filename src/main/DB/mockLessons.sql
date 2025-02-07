@@ -1,4 +1,4 @@
-INSERT INTO Class (className, weekNo, duration, timeStart, teacherEmail, subjectName)
+INSERT INTO Lesson (lessonName, weekNo, duration, timeStart, teacherEmail, subjectName)
 VALUES
 -- Basic Fiqh Classes (Abdul Rahman Hassan)
 ('Basic Fiqh Class 1', 1, 60, '09:00:00', 'abdulrahman.hassan@example.com', 'Basic Fiqh'),

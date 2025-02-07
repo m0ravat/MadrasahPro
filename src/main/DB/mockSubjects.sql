@@ -1,4 +1,4 @@
-INSERT INTO Subject(subjectName, shortDesc, overview, outcome, duration, startDate, courseName)
+INSERT INTO Subject(subjectName, shortDesc, overview, outcome, duration, startYear, courseName)
 VALUES ("Basic Fiqh", "Fiqh - The application of Islamic principles", "This subject is
          designed to teach students about the basic actions a muslim must perform, like
          observing prayers and fasting, as well as the rules in regards to them.", "As a
@@ -37,7 +37,7 @@ foundational knowledge of Basic Hadith, exploring more complex Hadiths and their
 Students will study the classification of Hadith, the methodology of Hadith scholars, and the
 application of Hadith in Islamic jurisprudence.", "Upon completion, students should be able
 to analyze Hadiths with a deeper understanding, recognize the importance of Hadith in Islamic
-law, and apply these teachings to contemporary issues.", 1, 2 "Maktab Classes"),
+law, and apply these teachings to contemporary issues.", 1, 2, "Maktab Classes"),
        ("Advanced Hadith", "Hadith - Prophetic Traditions", "This subject delves into
 advanced topics in Hadith studies, including the science of Hadith criticism
 (Mustalah al-Hadith), the major collections of Hadith, and the role of Hadith in Islamic
