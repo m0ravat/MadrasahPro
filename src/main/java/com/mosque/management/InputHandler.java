@@ -1,18 +1,22 @@
 package com.mosque.management;
 
 import com.mosque.management.database.AccountQueries;
+import com.mosque.management.education.Exam;
+import com.mosque.management.education.Lesson;
 import com.mosque.management.users.EmergencyContact;
 import com.mosque.management.users.Student;
 import com.mosque.management.users.Teacher;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import static com.mosque.management.database.AccountQueries.updateStudentDB;
 import static com.mosque.management.database.AccountQueries.updateTeacherDB;
+import static com.mosque.management.database.ExamQueries.*;
+import static com.mosque.management.database.LessonQueries.getLessonsByTeacher;
+import static com.mosque.management.database.StudentAttendanceQueries.insertStudentAttendance;
+import static com.mosque.management.database.StudentAttendanceQueries.isTeacherTeachingLesson;
 
 public class InputHandler {
     public static Student promptSignup() {
@@ -244,6 +248,63 @@ public class InputHandler {
 
         // Update the database
         updateTeacherDB(teacher);
+    }
+    public static void enterStudentMark(String teacherEmail) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Exams led by teacher: \n");
+        List<Exam> exams;
+        exams = getExamsByTeacher(teacherEmail);
+        for (Exam exam : exams) {
+            System.out.println(exam.toString());
+        }
+        if (exams.isEmpty()) {
+            return;
+        }
+        System.out.print("Enter the student email: ");
+        String studentEmail = input.nextLine();
+
+        System.out.print("Enter the exam ID: ");
+        int examID = input.nextInt();
+        input.nextLine(); // Consume newline
+
+        // Check if the teacher is leading this exam
+        if (!isTeacherLeadingExam(teacherEmail, examID)) {
+            System.out.println("You are not authorized to enter marks for this exam.");
+            return;
+        } else {
+            System.out.print("Enter the exam mark: ");
+            double mark = input.nextDouble();
+            input.nextLine(); // Consume newline
+
+            // Call the database method to enter exam marks
+            insertExamResult(studentEmail, examID, mark);
+        }
+    }
+    public static void markStudentAttendance(String teacherEmail) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Lessons you lead: \n");
+        List<Lesson> lessons;
+        lessons = getLessonsByTeacher(teacherEmail);
+        for (Lesson lesson : lessons) {
+            System.out.println(lesson.toString());
+        }
+        System.out.print("Enter the lesson name: ");
+        String lessonName = input.nextLine();
+
+        // Check if the teacher is teaching this lesson
+        if (!isTeacherTeachingLesson(teacherEmail, lessonName)) {
+            System.out.println("You are not authorized to mark attendance for this lesson.");
+            return;
+        }
+
+        System.out.print("Enter the student email: ");
+        String studentEmail = input.nextLine();
+
+        System.out.print("Enter the attendance mark (X for absent, A for authorised absence, P for present): ");
+        String mark = input.nextLine();
+
+        // Call the database method to mark attendance
+        insertStudentAttendance(studentEmail, lessonName, mark);
     }
 
 }

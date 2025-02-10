@@ -131,7 +131,7 @@ CREATE TABLE BookOrder (
 CREATE TABLE StudentAttendance (
                                    studentEmail VARCHAR(100), -- Changed to reference Student(email)
                                    lessonName VARCHAR(100),
-                                   mark DECIMAL(5,2),
+                                   mark VARCHAR(10),
                                    PRIMARY KEY (studentEmail, lessonName,mark),
                                    FOREIGN KEY (studentEmail) REFERENCES Student(email) ON DELETE CASCADE,
                                    FOREIGN KEY (lessonName) REFERENCES Lesson(lessonName) ON DELETE CASCADE

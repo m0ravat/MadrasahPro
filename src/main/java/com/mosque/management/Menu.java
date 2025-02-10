@@ -7,7 +7,8 @@ import com.mosque.management.users.Teacher;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
-import static com.mosque.management.InputHandler.editDetails;
+
+import static com.mosque.management.InputHandler.*;
 import static com.mosque.management.database.AccountQueries.deleteStudent;
 import static com.mosque.management.database.AccountQueries.getStudentFromDB;
 import static com.mosque.management.database.BookQueries.buyBook;
@@ -106,11 +107,27 @@ public class Menu {
 
     public static void teacherMenu(Teacher teacher1){
         while(menu){
-            System.out.println("Do you want to: " +
-                    "1. View your teacher details" +
-                    "2. Edit your teacher details" +
-                    "3. Mark attendance for a class" +
-                    "4. Enter student marks for an exam");
+            System.out.println("Do you want to: \n" +
+                    "1. View your teacher details\n" +
+                    "2. Edit your teacher details\n" +
+                    "3. Mark attendance for a class\n" +
+                    "4. Enter student marks for an exam\n");
+            Scanner input = new Scanner(System.in);
+            int option = input.nextInt();
+            input.nextLine();
+            switch(option){
+                case 1:
+                    System.out.println(teacher1.toString());
+                    break;
+                case 2:
+                    editDetails(teacher1);
+                    break;
+                case 3:
+                    markStudentAttendance(teacher1.getEmail());
+                    break;
+                case 4:
+                    enterStudentMark(teacher1.getEmail());
+            }
         }
     }
 }
