@@ -1,13 +1,13 @@
 package com.mosque.management.users;
 
-import java.util.Date;
+import java.sql.Date;
 
 public interface Person {
     String getFirstName();
     void setFirstName(String firstName);
     String getLastName();
     void setLastName(String lastName);
-    java.sql.Date getDoB();
+    Date getDoB();
 
     void setDoB(java.sql.Date doB);
     String getEmail();

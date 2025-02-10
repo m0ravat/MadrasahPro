@@ -1,20 +1,20 @@
 package com.mosque.management.users;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Teacher implements Person{
-    private String firstName;
-    private String lastName;
-    private java.sql.Date doB;
-    private String email;
-    private String address;
-    private String telNo;
-    private String username;
-    private String allergies;
-    private String password;
-    private String cv;
-    private double salary;
-    private int hours;
+    private String firstName = "Null";
+    private String lastName = "Null";
+    private java.sql.Date doB = new java.sql.Date(new java.util.Date().getTime());
+    private String email = "Null";
+    private String address = "Null";
+    private String telNo = "Null";
+    private String username = "Null";
+    private String allergies = "Null";
+    private String password = "Null";
+    private String cv = "Null";
+    private double salary=0.00;
+    private int hours=0;
     public Teacher(String firstName, String lastName, java.sql.Date doB,
                    String email, String address, String telNo,
                    String allergies, String password, String cv,
@@ -61,7 +61,7 @@ public class Teacher implements Person{
     @Override
     public void setLastName(String lastName) { this.lastName = lastName; }
     @Override
-    public java.sql.Date getDoB() { return doB; }
+    public Date getDoB() { return doB; }
     @Override
     public void setDoB(java.sql.Date doB) { this.doB = doB; }
     @Override
@@ -76,7 +76,10 @@ public class Teacher implements Person{
     public String getTelNo() { return telNo; }
     @Override
     public void setTelNo(String telNo) { this.telNo = telNo; }
-
+    public void setAllergies(String allergies){
+        this.allergies=allergies;
+    }
+    public String getAllergies(){return this.allergies;}
     // Teacher specific getters and setters
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
@@ -88,4 +91,15 @@ public class Teacher implements Person{
     public void setSalary(double salary) { this.salary = salary; }
     public int getHours() { return hours; }
     public void setHours(int hours) { this.hours = hours; }
+    public String toString(){
+        return "Name : " + this.firstName + " " + this.lastName + "\n" +
+                "Email : " + this.email + "\n" +
+                "Telephone number : " + this.telNo + "\n" +
+                "Address : " + this.address + "\n" +
+                "Date of birth : " + this.doB + "\n" +
+                "Allergies : " + this.allergies + "\n" +
+                "Hours : " + this.hours + "\n" +
+                "Salary : " + this.salary + "\n" +
+                "CV : " + this.cv   ;
+    }
 }

@@ -1,6 +1,6 @@
 package com.mosque.management;
 
-import com.mosque.management.database.LoginSignUpQueries;
+import com.mosque.management.database.AccountQueries;
 import com.mosque.management.users.EmergencyContact;
 import com.mosque.management.users.Student;
 import com.mosque.management.users.Teacher;
@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
+
+import static com.mosque.management.database.AccountQueries.updateStudentDB;
+import static com.mosque.management.database.AccountQueries.updateTeacherDB;
 
 public class InputHandler {
     public static Student promptSignup() {
@@ -110,7 +113,7 @@ public class InputHandler {
         System.out.println("Enter your password: ");
         String password = sc.nextLine();
 
-        Optional<Student> student = LoginSignUpQueries.getStudentFromDB(username, password);
+        Optional<Student> student = AccountQueries.getStudentFromDB(username, password);
         if (student.isPresent()) {
             System.out.println("Login successful! Welcome, " + student.get().getFirstName());
         } else {
@@ -126,13 +129,121 @@ public class InputHandler {
         System.out.println("Enter your password: ");
         String password = sc.nextLine();
 
-        Optional<Teacher> teacher = LoginSignUpQueries.getTeacherFromDB(username, password);
+        Optional<Teacher> teacher = AccountQueries.getTeacherFromDB(username, password);
         if (teacher.isPresent()) {
             System.out.println("Login successful! Welcome, " + teacher.get().getFirstName());
         } else {
             System.out.println("Invalid credentials. Please try again.");
         }
         return teacher;
+    }
+    public static void editDetails(Student student) {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Editing details for student: " + student.getEmail());
+        System.out.println("Leave blank to keep the current value.");
+
+        // Prompt for new values
+        System.out.print("Enter new first name (" + student.getFirstName() + "): ");
+        String newFirstName = in.nextLine().trim();
+        if (!newFirstName.isEmpty()) {
+            student.setFirstName(newFirstName);
+        }
+
+        System.out.print("Enter new last name (" + student.getLastName() + "): ");
+        String newLastName = in.nextLine().trim();
+        if (!newLastName.isEmpty()) {
+            student.setLastName(newLastName);
+        }
+
+        System.out.print("Enter new date of birth (" + student.getDoB() + ") (format yyyy/mm/dd): ");
+        String newDoB = in.nextLine().trim();
+        if (!newDoB.isEmpty()) {
+            student.setDoB(java.sql.Date.valueOf(newDoB));
+        }
+
+        System.out.print("Enter new address (" + student.getAddress() + "): ");
+        String newAddress = in.nextLine().trim();
+        if (!newAddress.isEmpty()) {
+            student.setAddress(newAddress);
+        }
+
+        System.out.print("Enter new telephone number (" + student.getTelNo() + "): ");
+        String newTelNo = in.nextLine().trim();
+        if (!newTelNo.isEmpty()) {
+            student.setTelNo(newTelNo);
+        }
+
+        System.out.print("Enter new allergies (" + student.getAllergies() + "): ");
+        String newAllergies = in.nextLine().trim();
+        if (!newAllergies.isEmpty()) {
+            student.setAllergies(newAllergies);
+        }
+
+        System.out.print("Enter new password: ");
+        String newPassword = in.nextLine().trim();
+        System.out.println("Confirm password: ");
+        String confirmPassword = in.nextLine().trim();
+        if (!newPassword.isEmpty() && confirmPassword.equals(newPassword)) {
+            student.setPassword(newPassword);
+        }
+
+        // Update the database
+        updateStudentDB(student);
+    }
+    public static void editDetails(Teacher teacher) {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Editing details for teacher: " + teacher.getEmail());
+        System.out.println("Leave blank to keep the current value.");
+
+        // Prompt for new values
+        System.out.print("Enter new first name (" + teacher.getFirstName() + "): ");
+        String newFirstName = in.nextLine().trim();
+        if (!newFirstName.isEmpty()) {
+            teacher.setFirstName(newFirstName);
+        }
+
+        System.out.print("Enter new last name (" + teacher.getLastName() + "): ");
+        String newLastName = in.nextLine().trim();
+        if (!newLastName.isEmpty()) {
+            teacher.setLastName(newLastName);
+        }
+
+        System.out.print("Enter new date of birth (" + teacher.getDoB() + ") (format yyyy/mm/dd): ");
+        String newDoB = in.nextLine().trim();
+        if (!newDoB.isEmpty()) {
+            teacher.setDoB(java.sql.Date.valueOf(newDoB));
+        }
+
+        System.out.print("Enter new address (" + teacher.getAddress() + "): ");
+        String newAddress = in.nextLine().trim();
+        if (!newAddress.isEmpty()) {
+            teacher.setAddress(newAddress);
+        }
+
+        System.out.print("Enter new telephone number (" + teacher.getTelNo() + "): ");
+        String newTelNo = in.nextLine().trim();
+        if (!newTelNo.isEmpty()) {
+            teacher.setTelNo(newTelNo);
+        }
+
+        System.out.print("Enter new allergies (" + teacher.getAllergies() + "): ");
+        String newAllergies = in.nextLine().trim();
+        if (!newAllergies.isEmpty()) {
+            teacher.setAllergies(newAllergies);
+        }
+
+        System.out.print("Enter new password: ");
+        String newPassword = in.nextLine().trim();
+        System.out.println("Confirm password: ");
+        String confirmPassword = in.nextLine().trim();
+        if (!newPassword.isEmpty() && confirmPassword.equals(newPassword)) {
+            teacher.setPassword(newPassword);
+        }
+
+        // Update the database
+        updateTeacherDB(teacher);
     }
 
 }

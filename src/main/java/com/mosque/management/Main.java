@@ -3,15 +3,16 @@ import com.mosque.management.education.Course;
 import com.mosque.management.education.Subject;
 import com.mosque.management.users.Student;
 import com.mosque.management.users.Teacher;
-import com.mosque.management.database.LoginSignUpQueries;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import static com.mosque.management.Menu.studentMenu;
+import static com.mosque.management.Menu.teacherMenu;
 import static com.mosque.management.database.CourseQueries.generateSubjects;
 import static com.mosque.management.database.CourseQueries.returnCourse;
-import static com.mosque.management.database.LoginSignUpQueries.insertNewStudentToDB;
+import static com.mosque.management.database.AccountQueries.insertNewStudentToDB;
 
 
 public class Main {
@@ -26,6 +27,7 @@ public class Main {
             System.out.println("5 - Quit");
             Scanner sc = new Scanner(System.in);
             int option = sc.nextInt();
+            sc.nextLine();
             switch (option) {
                 case 1:
                     Student newStudent = InputHandler.promptSignup();
@@ -37,9 +39,21 @@ public class Main {
                     switch (option2) {
                         case 1:
                             Optional<Student> stuL = InputHandler.loginStudent();
+                            if (stuL.isPresent()) {
+                                stuL.toString();
+                                studentMenu(stuL.get());
+                            } else {
+                                System.out.println("Login failed. Exiting...");
+                            }
                             break;
                         case 2:
                             Optional<Teacher> teachL = InputHandler.loginTeacher();
+                            if (teachL.isPresent()) {
+                                teachL.toString();
+                                teacherMenu(teachL.get());
+                            } else {
+                                System.out.println("Login failed. Exiting...");
+                            }
                             break;
                     }
                     break;

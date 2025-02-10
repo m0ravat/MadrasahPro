@@ -1,6 +1,6 @@
 package com.mosque.management.users;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class EmergencyContact implements Person {
     private String firstName;
@@ -40,7 +40,7 @@ public class EmergencyContact implements Person {
     }
 
     @Override
-    public java.sql.Date getDoB() {
+    public Date getDoB() {
         return this.doB;
     }
 
@@ -78,6 +78,12 @@ public class EmergencyContact implements Person {
     public void setTelNo(String telNo) {
         this.telNo = telNo;
     }
-
+    public String toString(){
+        return "Name : " + this.firstName + " " + this.lastName + "\n" +
+                "Email : " + this.email + "\n" +
+                "Date of birth : " + this.doB + "\n" +
+                "Telephone number : " + this.telNo + "\n" +
+                "Address : " + this.address + "\n" ;
+    }
 
 }
